@@ -1,3 +1,4 @@
+<!-- submit.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Submit a Print Idea</title>
   <link rel="stylesheet" href="style.css" />
-  <script>
+  <script defer>
+    const submissionOpen = true; // Toggle prompt submission open/closed
+
+    // 🎨 Filament color availability (set true/false)
     const filamentColors = {
       "Black": true,
       "White": true,
@@ -20,21 +24,18 @@
       const formSection = document.getElementById("form-section");
       const closedSection = document.getElementById("closed-section");
 
-      // Show or hide form based on submission status
-      if (true) {  // Change this based on whether submission is open or closed
+      if (submissionOpen) {
         formSection.style.display = "block";
         closedSection.style.display = "none";
         populateColorOptions("filamentColor");
         populateColorOptions("color1");
         populateColorOptions("color2");
-        populateColorOptions("color3");
       } else {
         formSection.style.display = "none";
         closedSection.style.display = "block";
       }
     };
 
-    // Populate color options dynamically
     function populateColorOptions(selectId) {
       const select = document.getElementById(selectId);
       Object.entries(filamentColors).forEach(([color, available]) => {
@@ -45,44 +46,6 @@
           select.appendChild(option);
         }
       });
-    }
-
-    // Handle form submission
-    function handleSubmit(event) {
-      event.preventDefault();
-
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const filamentColor = document.getElementById('filamentColor').value;
-      const color1 = document.getElementById('color1').value;
-      const color2 = document.getElementById('color2').value;
-      const color3 = document.getElementById('color3').value;
-      const prompt = document.getElementById('prompt').value;
-
-      // Construct the submission object
-      const submission = {
-        name,
-        phone,
-        filamentColor,
-        color1,
-        color2,
-        color3,
-        prompt,
-        submittedAt: new Date().toLocaleString()
-      };
-
-      // Retrieve existing submissions or initialize as empty array
-      let submissions = JSON.parse(localStorage.getItem('submissions')) || [];
-
-      // Add new submission
-      submissions.push(submission);
-
-      // Save back to localStorage
-      localStorage.setItem('submissions', JSON.stringify(submissions));
-
-      // Provide feedback to the user
-      alert("Your submission has been saved!");
-      document.getElementById("submission-form").reset();
     }
   </script>
 </head>
@@ -109,7 +72,7 @@
     <!-- Section shown when submissions are open -->
     <section id="form-section" style="display: none;">
       <h2 class="glow-text">Submit Your 3D Print Prompt</h2>
-      <form id="submission-form" onsubmit="handleSubmit(event)">
+      <form action="https://formspree.io/f/your-form-id" method="POST" class="submission-form">
         <label for="name">Your Name:</label><br />
         <input type="text" id="name" name="name" required /><br />
 
@@ -129,11 +92,6 @@
         <label for="color2">Color 2 (optional):</label><br />
         <select id="color2" name="color2">
           <option value="">-- Select color 2 (e.g. text/logo) --</option>
-        </select><br />
-
-        <label for="color3">Color 3 (optional):</label><br />
-        <select id="color3" name="color3">
-          <option value="">-- Select color 3 (e.g. extra detail) --</option>
         </select><br />
 
         <label for="prompt">Print Prompt:</label><br />
