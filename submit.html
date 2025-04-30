@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit a Print Idea</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer>
+    const submissionOpen = true; // Toggle submissions on/off
+
+    // 🎨 Filament color options — toggle available colors
+    const filamentColors = {
+      "Black": true,
+      "White": true,
+      "Red": false,
+      "Blue": true,
+      "Green": false,
+      "Glow in the Dark": true,
+      "Silver": true
+    };
+
+    window.onload = () => {
+      const formSection = document.getElementById("form-section");
+      const closedSection = document.getElementById("closed-section");
+
+      if (submissionOpen) {
+        formSection.style.display = "block";
+        closedSection.style.display = "none";
+        populateColorOptions(); // load color options
+      } else {
+        formSection.style.display = "none";
+        closedSection.style.display = "block";
+      }
+    };
+
+    function populateColorOptions() {
+      const select = document.getElementById("filamentColor");
+      Object.entries(filamentColors).forEach(([color, available]) => {
+        if (available) {
+          const option = document.createElement("option");
+          option.value = color;
+          option.textContent = color;
+          select.appendChild(option);
+        }
+      });
+    }
+  </script>
+</head>
+<body class="fade-in">
+  <header>
+    <h1 class="glow-text">Custom Print Request</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="glow-link">Home</a></li>
+        <li><a href="market.html" class="glow-link">Explore the Market</a></li>
+        <li><a href="items.html" class="glow-link">Items</a></li>
+        <li><a href="submit.html" class="glow-link">Submit Prompt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Section when submissions are closed -->
+    <section id="closed-section">
+      <h2 class="glow-text">Prompt Submissions Closed</h2>
+      <p>We're not accepting custom print prompts right now. Check back later at the market!</p>
+    </section>
+
+    <!-- Section when submissions are open -->
+    <section id="form-section" style="display: none;">
+      <h2 class="glow-text">Submit Your 3D Print Prompt</h2>
+      <form action="https://formspree.io/f/your-form-id" method="POST" class="submission-form">
+        <label for="name">Your Name:</label><br />
+        <input type="text" id="name" name="name" required /><br />
+
+        <label for="phone">Your Phone Number:</label><br />
+        <input type="tel" id="phone" name="phone" pattern="[0-9+\-\s]{7,15}" required /><br />
+
+        <label for="filamentColor">Preferred Filament Color:</label><br />
+        <select id="filamentColor" name="filamentColor" required>
+          <option value="">-- Select a color --</option>
+        </select><br />
+
+        <label for="prompt">Print Prompt:</label><br />
+        <textarea id="prompt" name="prompt" rows="4" required></textarea><br />
+
+        <button type="submit" class="btn-explore">Submit Prompt</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Phantom Prints Market | All Rights Reserved</p>
+  </footer>
+</body>
+</html>
