@@ -1,0 +1,118 @@
+/* General Styles */
+body {
+  background-color: #111;
+  color: #eee;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+.glow-text {
+  color: #fff;
+  text-shadow: 0 0 5px #8e44ad, 0 0 10px #8e44ad, 0 0 15px #8e44ad;
+}
+
+/* Navigation styles */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Spacing between buttons */
+  margin-top: 30px;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+.glow-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  text-shadow: 0 0 5px #8e44ad, 0 0 10px #8e44ad;
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.glow-link:hover {
+  color: #8e44ad;
+  text-shadow: 0 0 15px #8e44ad;
+  background-color: #333;
+  border-color: #8e44ad;
+}
+
+.fade-in {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Page transitions */
+body {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Home, Market, and Items Pages */
+.home, .market, .items {
+  padding: 50px;
+}
+
+.intro {
+  text-align: center;
+  margin-top: 100px;
+}
+
+/* Market and Items Pages */
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.product-card {
+  background-color: #222;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Links and Buttons */
+button, a {
+  background: none;
+  border: 2px solid #8e44ad;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, a:hover {
+  background-color: #8e44ad;
+  transform: scale(1.05);
+}
