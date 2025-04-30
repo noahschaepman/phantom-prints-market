@@ -1,29 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phantom Prints - Home</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom Prints Market</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="content-manager.js" defer></script>
 </head>
-<body class="fade-in">
-  <header>
-    <h1 class="glow-text">Welcome to Phantom Prints</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="glow-link">Home</a></li>
-        <li><a href="market.html" class="glow-link">Explore the Market</a></li>
-        <li><a href="items.html" class="glow-link">Items</a></li>
-      </ul>
-    </nav>
-  </header>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Phantom Prints</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="items.html">Items</a>
+                <a href="manage-content.html">Manage Content</a>
+            </div>
+        </nav>
+    </header>
 
-  <main class="home">
     <section class="intro">
-      <h2 class="glow-text">Unveil the Secrets of 3D Printing</h2>
-      <p>Step into the world of exclusive creations, where every print holds a story from the shadows.</p>
+        <div class="intro-content">
+            <h2>Welcome to Phantom Prints Market!</h2>
+            <p id="market-description">
+                Discover unique, high-quality 3D printed creations at Phantom Prints. 
+                Whether you're a collector or just looking for something special, our market offers an array of one-of-a-kind items — all handcrafted with precision and care.
+            </p>
+            <p>
+                From intricately designed figurines to personalized name tags, each item is carefully crafted using the latest 3D printing technology. Browse our collection, explore your favorite pieces, and find something truly exceptional today.
+            </p>
+            <a href="items.html" class="btn-explore">Explore Our Items</a>
+        </div>
     </section>
-  </main>
+
+    <section class="featured-items">
+        <h2>Featured Items</h2>
+        <div class="items-container">
+            <div class="item-card">
+                <h3 id="item-1-name">Articulated Dragon</h3>
+                <p id="item-1-description">
+                    Unleash your imagination with our articulated dragon! This stunning piece features movable joints, allowing you to pose it however you like. 
+                    Perfect for collectors and fans of fantasy art.
+                </p>
+            </div>
+            <div class="item-card">
+                <h3 id="item-2-name">Custom Name Tag</h3>
+                <p id="item-2-description">
+                    Personalize your style with our custom name tags. Whether for yourself or as a thoughtful gift, each tag is tailored to your specifications, making it a unique accessory for any occasion.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Phantom Prints Market | All Rights Reserved</p>
+    </footer>
 </body>
 </html>
